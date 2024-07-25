@@ -1,0 +1,17 @@
+<div class="teacher-card p-3 border-0 rounded-3 shadow-sm bg-white">
+    <img
+    [src]="
+    studentData?.pictureUrl != null
+        ? studentData?.pictureUrl
+        : 'https://icons.veryicon.com/png/o/business/educational-administration-related/teacher-11.png'
+    "
+    alt="Teacher Image"
+    class="teacher-img rounded-circle shadow-lg border"
+  />
+    <div class="teacher-details ms-3">
+        <h2>{{studentData?.fname}} {{studentData?.lname}}</h2>
+        <h3>numOfCrsEnrolled : {{studentData?.numOfCrsEnrolled}}</h3>
+        <h3>numOfCertificates : {{studentData?.numOfCertificates}}</h3>
+    </div>
+    
+</div>

@@ -1,0 +1,189 @@
+<!--
+<ng-container *ngFor="let vid of comingVideo; let i = index" >
+  <div (click)="handleLink(vid)">
+  <label [for]="'video-' + i" >
+    {{vid.title}}
+  </label>
+<input type="radio"   [id]="'video-' + i" [checked]="vid.state" >
+</div>
+</ng-container>
+<br>
+
+<video style="width: 400px;" [src]="contLink+vidLink" controls></video>
+ -->
+<div class="container-fluid p-0">
+  <div class="container-fluid p-0">
+    <div class="hed d-flex align-items-center">
+      <button (click)="navigateToCourse(CourseId)" class="btn btn-back me-3">
+        <i class="fas fa-arrow-left"></i> Back to Course
+      </button>
+      <h5 class="header-title">
+        Implementation of Computer Network Fundamentals
+      </h5>
+    </div>
+  </div>
+
+  <!-- course videos section -->
+  <div class="row container-fluid">
+    <!-- videos list -->
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="container mt-3 border border-info shadow-lg rounded-3 p-3">
+        <h5 class="text-dark fw-2 me-3">Course videos:</h5>
+
+        <div class="accordion mt-3" id="videoAccordion">
+          <ng-container>
+            <ng-container
+              *ngFor="let chapter of chapters; let chapterIndex = index"
+            >
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading{{ chapterIndex }}">
+                  <button
+                    class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    [attr.data-bs-target]="'#collapse' + chapterIndex"
+                    aria-expanded="true"
+                    [attr.aria-controls]="'collapse' + chapterIndex"
+                  >
+                    Chapter {{ chapter }}
+                  </button>
+                </h2>
+
+                <div
+                  id="collapse{{ chapterIndex }}"
+                  class="accordion-collapse collapse show"
+                  [attr.aria-labelledby]="'heading' + chapterIndex"
+                  data-bs-parent="#videoAccordion"
+                >
+                  <ng-container *ngFor="let vid of comingVideo; let i = index">
+                    <ng-container *ngIf="vid.chapter == chapter">
+                      <div class="accordion-body">
+                        <ul class="list-group">
+                          <li class="list-group-item">
+                            <i class="fas fa-play-circle"></i>
+                            <div
+                              (click)="handleLink(vid, i)"
+                              class="handlepart custom-checkbox"
+                            >
+                              <label [for]="'video-' + i" class="video-label">
+                                {{ vid.title }}
+                              </label>
+                              <!-- <input type="radio" [id]="'video-' + i" [checked]="vid.state" class="video-input"> -->
+                              <ng-container *ngIf="vid.state == true">
+                                <i class="fa-solid fa-check"></i>
+                              </ng-container>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+    <!-- End of videos list -->
+
+    <div class="col-12 col-md-6 col-lg-8">
+      <div class="container mt-3 bg-white shadow-lg border-0 rounded-3">
+        <div class="video-section bg-white border-0">
+          <h5 class="text-center mb-3 p-2">
+            Welcome to Implementation of Computer Network Course
+          </h5>
+          <div class="video-container rounded-3">
+            <video
+              [src]=" vidLink"
+              oncontextmenu="return false;"
+              controls
+            ></video>
+          </div>
+          <div class="row d-flex justify-content-around">
+            <div class="col-6 col-md-4 mb-3 mb-md-0">
+              <button
+                class="btn btn-secondary btn-responsive w-100"
+                (click)="moveback()"
+              >
+                <i class="fas fa-arrow-left"></i> Previous
+              </button>
+            </div>
+            <div class="col-6 col-md-4">
+              <button
+                class="btn btn-primary btn-responsive w-100"
+                (click)="moveForword()"
+              >
+                Next <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- browse video -->
+
+    <!-- end of browse video -->
+  </div>
+</div>
+
+<!-- discussion box -->
+<br />
+<br />
+<div class="card container-fluid">
+  <div
+    class="card-body"
+    #scrollMe
+    style="overflow: scroll; height: 535px"
+    [scrollTop]="scrollMe.scrollHeight"
+  >
+    <!-- /////// -->
+    <ng-container *ngIf="Allcomments">
+      <ng-container *ngFor="let comment of Allcomments">
+        <div class="comment">
+          <img [src]=" comment.studentPhoto" width="50" height="50" />
+          <div class="comment-body">
+            <div class="comment-header">
+              <div class="name">{{ comment.studentName }}</div>
+              <div class="timestamp">
+                {{ comment.commentDate | date : "short" }}
+              </div>
+            </div>
+            <div>{{ comment.content }}</div>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+
+    <!-- /////// -->
+  </div>
+
+  <div class="card-footer">
+    <form #messageForm="ngForm" autocomplete="off">
+      <div class="input-group">
+        <input
+          name="messageContent"
+          required
+          #messageInput
+          type="text"
+          class="form-control input-sm"
+          placeholder="ask and answer"
+          (change)="bindComment($event)"
+        />
+
+        <div class="input-group-append">
+          <button
+            [disabled]="!messageForm.valid"
+            class="btn btn-primary"
+            (click)="addNewcomment(messageInput)"
+          >
+            comment
+            <i class="fa fa-spinner fa-spin"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

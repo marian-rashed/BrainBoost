@@ -1,0 +1,412 @@
+<section class="h-100" style="background-color: #eee">
+  <div class="container-fluid h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div
+                *ngIf="!isSubmitted"
+                class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1"
+              >
+                <p class="text-center h1 fw-bold mb-2 mx-1 mx-md-4">Sign up</p>
+
+                <form [formGroup]="UserRegisterForm" class="mx-1 mx-md-4 mb-2">
+                  <!-- Display error message -->
+                  <div class="alert alert-danger" *ngIf="registrationError">{{ registrationError }}</div>
+
+
+                  <div class="d-flex flex-row align-items-center mb-2">
+                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <div
+                      data-mdb-input-init
+                      class="form-outline flex-fill mb-0"
+                    >
+                      <label class="form-label" for="form3Example1c"
+                        >Your Name</label
+                      >
+                      <input
+                        type="text"
+                        id="form3Example1c"
+                        class="form-control"
+                        formControlName="userName"
+                        name="userName"
+                      />
+                      <div
+                        *ngIf="
+                          UserRegisterForm.controls['userName'].invalid &&
+                          (UserRegisterForm.controls['userName'].dirty ||
+                            UserRegisterForm.controls['userName'].touched)
+                        "
+                      >
+                        <small
+                          class="text-danger"
+                          *ngIf="
+                            UserRegisterForm.controls['userName'].errors![
+                              'required'
+                            ]
+                          "
+                          >Username is required.</small
+                        >
+                        <small
+                          class="text-danger"
+                          *ngIf="
+                            UserRegisterForm.controls['userName'].errors![
+                              'minlength'
+                            ]
+                          "
+                          >Username should be more than 10 char.</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-2">
+                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <div
+                      data-mdb-input-init
+                      class="form-outline flex-fill mb-0"
+                    >
+                      <label class="form-label" for="firstName"
+                        >Your First Name</label
+                      >
+                      <input
+                        type="text"
+                        id="firstName"
+                        class="form-control"
+                        formControlName="firstName"
+                        name="firstName"
+                      />
+                      <div
+                        *ngIf="
+                          UserRegisterForm.controls['firstName'].invalid &&
+                          (UserRegisterForm.controls['firstName'].dirty ||
+                            UserRegisterForm.controls['firstName'].touched)
+                        "
+                      >
+                        <small
+                          class="text-danger"
+                          *ngIf="
+                            UserRegisterForm.controls['firstName'].errors![
+                              'required'
+                            ]
+                          "
+                          >First Name is required.</small
+                        >
+                        <small
+                          class="text-danger"
+                          *ngIf="
+                            UserRegisterForm.controls['firstName'].errors![
+                              'minlength'
+                            ]
+                          "
+                          >First Name should be more than 5 char.</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-2">
+                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <div
+                      data-mdb-input-init
+                      class="form-outline flex-fill mb-0"
+                    >
+                      <label class="form-label" for="lastName"
+                        >Your Last Name</label
+                      >
+                      <input
+                        type="text"
+                        id="lastName"
+                        class="form-control"
+                        formControlName="lastName"
+                        name="lastName"
+                      />
+                      <div
+                        *ngIf="
+                          UserRegisterForm.controls['lastName'].invalid &&
+                          (UserRegisterForm.controls['lastName'].dirty ||
+                            UserRegisterForm.controls['lastName'].touched)
+                        "
+                      >
+                        <small
+                          class="text-danger"
+                          *ngIf="
+                            UserRegisterForm.controls['lastName'].errors![
+                              'required'
+                            ]
+                          "
+                          >Last Name is required.</small
+                        >
+                        <small
+                          class="text-danger"
+                          *ngIf="
+                            UserRegisterForm.controls['lastName'].errors![
+                              'minlength'
+                            ]
+                          "
+                          >Last Name should be more than 5 char.</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-2">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div
+                      data-mdb-input-init
+                      class="form-outline flex-fill mb-0"
+                    >
+                      <label class="form-label" for="form3Example3c"
+                        >Write your google email</label
+                      >
+                      <input
+                        type="email"
+                        id="form3Example3c"
+                        class="form-control"
+                        formControlName="email"
+                        name="email"
+                      />
+                      <div
+                        *ngIf="
+                          UserRegisterForm.controls['email'].invalid &&
+                          (UserRegisterForm.controls['email'].dirty ||
+                            UserRegisterForm.controls['email'].touched)
+                        "
+                      >
+                        <small
+                          class="text-danger"
+                          *ngIf="
+                            UserRegisterForm.controls['email'].errors![
+                              'required'
+                            ]
+                          "
+                          >Email is required.</small
+                        >
+                        <small
+                          class="text-danger"
+                          *ngIf="
+                            UserRegisterForm.controls['email'].errors![
+                              'pattern'
+                            ]
+                          "
+                          >Please text in email pattern</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-2">
+                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                    <div
+                      data-mdb-input-init
+                      class="form-outline flex-fill mb-0"
+                    >
+                      <label class="form-label" for="form3Example4c"
+                        >Password</label
+                      >
+                      <input
+                        type="password"
+                        id="form3Example4c"
+                        class="form-control"
+                        formControlName="password"
+                        name="password"
+                      />
+                      <div
+                        *ngIf="
+                          UserRegisterForm.controls['password'].invalid &&
+                          (UserRegisterForm.controls['password'].dirty ||
+                            UserRegisterForm.controls['password'].touched)
+                        "
+                      >
+                        <small
+                          class="text-danger"
+                          *ngIf="
+                            UserRegisterForm.controls['password'].errors![
+                              'required'
+                            ]
+                          "
+                          >Password is required.</small
+                        >
+                        <small
+                          class="text-danger"
+                          *ngIf="
+                            UserRegisterForm.controls['password'].errors![
+                              'pattern'
+                            ]
+                          "
+                          >Must Have at Least 1 digit , one Alpha , one non -
+                          alpha and at least of 13 digit</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-2">
+                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                    <div
+                      data-mdb-input-init
+                      class="form-outline flex-fill mb-0"
+                    >
+                      <label class="form-label" for="form3Example4cd"
+                        >Repeat your password</label
+                      >
+                      <input
+                        type="password"
+                        id="form3Example4cd"
+                        formControlName="confirmPassword"
+                        class="form-control"
+                      />
+                      <div
+                        *ngIf="
+                          UserRegisterForm.controls['confirmPassword']
+                            .invalid &&
+                          (UserRegisterForm.controls['confirmPassword'].dirty ||
+                            UserRegisterForm.controls['confirmPassword']
+                              .touched)
+                        "
+                      >
+                        <small
+                          class="text-danger"
+                          *ngIf="
+                            UserRegisterForm.controls['confirmPassword']
+                              .errors!['required']
+                          "
+                          >Password is required.</small
+                        >
+                      </div>
+                      <small
+                        class="text-danger"
+                        *ngIf="UserRegisterForm.errors?.['passwordMismatch'] && (UserRegisterForm.controls['confirmPassword']?.dirty || UserRegisterForm.controls['confirmPassword']?.touched)"
+                      >
+                        Passwords do not match.
+                      </small>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-2">
+                    <i class="fa-solid fa-person fa-xl me-3 fa-fw"></i>
+                    <div
+                      data-mdb-input-init
+                      class="form-outline flex-fill mb-0"
+                    >
+                      <label class="form-label" for="form3Example4cd"
+                        >Role</label
+                      >
+                      <select
+                        class="form-select"
+                        aria-label="Default select example"
+                        formControlName="Role"
+                        name="role"
+                      >
+                        <option value="" disabled>Select Your Role</option>
+                        <option value="Student">Student</option>
+                        <option value="Teacher">Teacher</option>
+                      </select>
+                      <div
+                        *ngIf="
+                          UserRegisterForm.controls['Role'].invalid &&
+                          (UserRegisterForm.controls['Role'].dirty ||
+                            UserRegisterForm.controls['Role'].touched)
+                        "
+                      >
+                        <small
+                          class="text-danger"
+                          *ngIf="
+                            UserRegisterForm.controls['Role'].errors![
+                              'required'
+                            ]
+                          "
+                          >Role is required.</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-check d-flex justify-content-center mb-3">
+                    <input
+                      class="form-check-input me-2"
+                      type="checkbox"
+                      value=""
+                      formControlName="AgreeToAllTerms"
+                      id="form2Example3c"
+                    />
+                    <label class="form-check-label" for="form2Example3">
+                      I agree all statements in
+                      <a href="https://en.wikipedia.org/wiki/Terms_of_service"
+                        >Terms of service</a
+                      >
+                    </label>
+                  </div>
+
+                  <div class="d-flex justify-content-center mx-4 mb-2 mb-lg-4">
+                    <button
+                      [disabled]="UserRegisterForm.invalid"
+                      type="button"
+                      data-mdb-button-init
+                      data-mdb-ripple-init
+                      class="btn btn-primary btn-lg"
+                      (click)="confirmUser()"
+                    >
+                      Register
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div
+                *ngIf="isSubmitted"
+                class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1"
+              >
+                <p class="text-center h1 fw-bold mb-2 mx-1 mx-md-4">
+                  We sent activation code to your gmail
+                </p>
+
+                <form class="mx-1 mx-md-4 mb-2">
+                  <div class="d-flex flex-row align-items-center mb-2">
+                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                    <div
+                      data-mdb-input-init
+                      class="form-outline flex-fill mb-0"
+                    >
+                      <label class="form-label" for="form3Example4cd"
+                        >enter your activation code</label
+                      >
+                      <input
+                        name="activationCodeInserted"
+                        type="text"
+                        id="form3Example4cd"
+                        class="form-control"
+                        [(ngModel)]="activationCodeInserted"
+                      />
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-center mx-4 mb-2 mb-lg-4">
+                    <button
+                      [disabled]="UserRegisterForm.invalid"
+                      type="button"
+                      data-mdb-button-init
+                      data-mdb-ripple-init
+                      class="btn btn-primary btn-lg"
+                      (click)="register()"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div
+                class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2"
+              >
+                <img
+                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                  class="img-fluid"
+                  alt="Sample image"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

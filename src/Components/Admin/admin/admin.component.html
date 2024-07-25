@@ -1,0 +1,22 @@
+<div class="container my-4">
+  <button type="button" class="btn btn-secondary mb-4" routerLink="/layout-dashboard/add-admin" routerLinkActive="active">Add new Admin</button>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    <div class="col" *ngFor="let admin of AllAdmins">
+      <div class="card course-card border-0 shadow-lg rounded-3">
+        <img [src]="admin.pictureUrl" class="card-img-top" alt="Admin Image">
+        <div class="card-body">
+          <h5 class="card-title">{{ admin.fname }} {{ admin.lname }}</h5>
+          <div class="btn-group">
+            <button type="button" class="btn btn-secondary me-4" (click)="openUpdateModal(admin)">Update</button>
+            <button type="button" class="btn btn-secondary" (click)="admin.id !== null ? DeleteAdmin(admin.id) : null">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-admin-update-modal
+    [admin]="selectedAdmin"
+    (adminUpdated)="GetAllAdmin()"
+  ></app-admin-update-modal>
+</div>

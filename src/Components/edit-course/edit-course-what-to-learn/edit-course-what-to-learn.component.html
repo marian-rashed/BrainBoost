@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>What the student will learn</h1>
+  <h2>Write the points which student will learn</h2>
+  <div *ngFor="let point of whatToLearnForm.controls;index as index" class="form-container shadow-5">
+    <h3>Point {{index + 1}}</h3>
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        id="inputGroupFile02"
+        [formControl]="getControl(index)"
+        placeholder="Enter what the student will learn"
+      />
+    </div>
+    <br>
+    <div class="class d-flex justify-content-end">
+      <button (click)="whatToLearnForm.removeAt(index)" type="button" class="btn btn-outline-primary text-center">
+        Delete
+      </button>
+    </div>
+  </div>
+  <br>
+  <div class="class d-flex justify-content-end text-center">
+    <button (click)="addPoint()" type="button" class="btn btn-outline-primary">Add Point</button>
+  </div>
+</div>

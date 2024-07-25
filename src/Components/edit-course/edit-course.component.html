@@ -1,0 +1,107 @@
+<mat-stepper [linear]="true" #stepper>
+  <!-- <mat-step [stepControl]="courseDetailsForm">
+    <form [formGroup]="courseDetailsForm">
+      <ng-template matStepLabel>Course Details</ng-template>
+      <app-edit-course-details
+        [courseDetailsForm]="courseDetailsForm"
+      ></app-edit-course-details>
+      <button
+        mat-button
+        matStepperNext
+        class="btn btn-secondary"
+        [disabled]="courseDetailsForm.invalid"
+      >
+        Next
+      </button>
+      <button
+        (click)="updateCourseDetails()"
+        mat-button
+        class="btn btn-secondary"
+        [disabled]="courseDetailsForm.invalid"
+      >
+        Update the details
+      </button>
+    </form>
+  </mat-step>
+  <mat-step [optional]="false">
+    <form>
+      <ng-template matStepLabel
+        >What the student will learn in this course</ng-template
+      >
+      <app-edit-course-what-to-learn
+        [courseId]="courseId"
+        [whatToLearnForm]="courseWhatToLearnForm"
+      ></app-edit-course-what-to-learn>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button
+          mat-button
+          matStepperNext
+          [disabled]="courseWhatToLearnForm.invalid"
+        >
+          Next
+        </button>
+        <button
+          (click)="updateWhatToLearn()"
+          mat-button
+          class="btn btn-secondary"
+          [disabled]="courseDetailsForm.invalid"
+        >
+          Update the Learning Points
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [optional]="false">
+    <form>
+      <ng-template matStepLabel>Add Qizzes for the course</ng-template>
+      <app-edit-course-questions
+        [courseId]="courseId"
+        [courseQuestionsForm]="courseQuestionsForm"
+      ></app-edit-course-questions>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button
+          mat-button
+          matStepperNext
+          [disabled]="courseQuestionsForm.invalid"
+        >
+          Next
+        </button>
+        <button
+          (click)="updateCourseQuiz()"
+          mat-button
+          matStepperNext
+          [disabled]="courseQuestionsForm.invalid"
+        >
+          Update the course quizz
+        </button>
+      </div>
+    </form>
+  </mat-step> -->
+  <mat-step [stepControl]="courseScheduleForm">
+    <form>
+      <ng-template matStepLabel>Add course videos</ng-template>
+      <app-edit-course-videos
+        [photoUrl]="courseDetailsForm.controls.photoUrl.value!"
+        [courseId]="courseId"
+        [courseScheduleForm]="courseScheduleForm"
+        [coursePhotoForm]="coursePhoto"
+        (onUploadPhoto)="editCoursePhoto(courseId,'Course',courseDetailsForm.controls['courseName'].value!)"
+        (onUploadVideo)="editCourseVideo($event)"
+      >
+      </app-edit-course-videos>
+    </form>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button
+        (click)="editCoursePhoto(courseId,'Course',courseDetailsForm.controls['courseName'].value!)"
+        mat-button
+        matStepperNext
+        [disabled]="courseScheduleForm.invalid || coursePhoto.invalid"
+      >
+        Upload course
+      </button>
+    </div>
+  </mat-step>
+</mat-stepper>

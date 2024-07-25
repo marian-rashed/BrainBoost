@@ -1,0 +1,244 @@
+<!-- <p>course-content works!</p>
+
+<h2 *ngIf="msg">
+  {{msg}}
+</h2> -->
+<!-- <ng-container *ngIf="Course">
+<button class="btn btn-outline-danger mx-1" (click)="navigateToVideos(CrsId)"   >Videos</button>
+<button class="btn btn-outline-danger mx-1" (click)="navigateToQuiz(CrsId)"  [disabled]="!Course.states?.hasFinishedallVideos" >Quiz</button>
+<button class="btn btn-outline-danger mx-1" (click)="navigateToCertificate(CrsId)"  [disabled]="!Course.states?.hasFinishedallVideos||!Course.states?.quizState" >Certificate</button>
+</ng-container>
+
+<div>
+  <textarea name="" id="" style="width: 300px;height: 300px;" (change)="review($event)"></textarea>
+  <div class="star-rating">
+    <span *ngFor="let star of stars; let i = index" (click)="rate(i + 1)">
+      <i class="fa" [class.fa-star]="i < rating" [class.fa-star-o]="i >= rating"></i>
+    </span>
+  </div>
+  <p>Your rating: {{rating}}</p>
+</div>
+
+
+ -->
+
+<ng-container *ngIf="Course">
+<div class="container-fluid mt-5">
+  <!-- course photo cover  -->
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card course-card shadow-lg rounded-3">
+        <div class="card-body course-card-body p-3">
+          <h5 class="course-card-title  p-3 rounded-3 text-white ">{{Course.name}}</h5>
+
+          <img
+            [src]="Course.photoUrl"
+            class="card-img-top course-card-img rounded-3 " alt="Course Cover Image">
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- end of course cover -->
+
+
+  <div class="row justify-content-center mt-4">
+    <!-- course Content  -->
+    <div class="col-12 col-lg-9 ">
+
+      <!-- course description -->
+      <div class="card course-description-card shadow-lg rounded-3 border-0 bg-white">
+        <div class="card-body">
+          <div class="course-description-content">
+            <h5 class="course-description-title">Course Description</h5>
+            <p>{{Course.longDescription}}</p>
+
+          </div>
+          <div class="course-description-content">
+            <h5 class="course-description-title">What you'll learn</h5>
+            <p>After completing this course you will be able to:</p>
+          </div>
+          <div class="course-description-list">
+            <ul class="list-unstyled">
+              <ng-container *ngFor="let item of Course.whatToLearn" >
+              <li>• {{item.content}}</li>
+            </ng-container>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- End of course description -->
+<!--
+
+
+      <div class="card mt-5 shadow-lg border-0 rounded-3 bg-white">
+        <div class="card-body">
+          <div class="course-info">
+            <h5>Course Content</h5>
+          </div>
+          <div class="accordion" id="courseContent">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                  aria-expanded="true" aria-controls="collapseOne">
+                  General
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                data-bs-parent="#courseContent">
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                  data-bs-parent="#courseContent">
+                  <div class="accordion-body">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">
+
+                          <i class="fas fa-play-circle"></i>
+                          <a href="path/to/welcome-video.html" class="text-decoration-none">Welcome</a>
+                          <i class="fas fa-check-circle completed-video"></i>
+                      </li>
+                  </ul>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  CH01_Introduction
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                data-bs-parent="#courseContent">
+                <div class="accordion-body">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <i class="fas fa-play-circle"></i>
+                        <a href="path/to/welcome-video.html" class="text-decoration-none">Welcome</a>
+                        <i class="fas fa-check-circle completed-video"></i>
+                    </li>
+                </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  CH02_JavaScript Language Basics
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                data-bs-parent="#courseContent">
+                <div class="accordion-body">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <i class="fas fa-play-circle"></i>
+                        <a href="path/to/welcome-video.html" class="text-decoration-none">Welcome</a>
+                        <i class="fas fa-check-circle completed-video"></i>
+                    </li>
+                </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  CH03_JS functions
+                </button>
+              </h2>
+              <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                data-bs-parent="#courseContent">
+                <div class="accordion-body">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <i class="fas fa-play-circle"></i>
+                        <a href="path/to/welcome-video.html" class="text-decoration-none">Welcome</a>
+                        <i class="fas fa-check-circle completed-video"></i>
+                    </li>
+                </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div> -->
+      <div class="card mt-5 shadow-lg rounded-3 border-0 bg-white">
+        <div class="card-body">
+          <h5 class="course-description-title">Leave a Review</h5>
+          <div class="mb-3">
+            <textarea class="form-control" rows="5" (change)="review($event)" placeholder="Write your review here..."></textarea>
+          </div>
+          <div class="star-rating mb-3">
+            <span *ngFor="let star of stars; let i = index" (click)="rate(i + 1)">
+              <i class="fa" [class.fa-star]="i < rating" [class.fa-star-o]="i >= rating"></i>
+            </span>
+          </div>
+          <!-- <p>Your rating: {{rating}}</p> -->
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+    <!-- course mini details right side -->
+    <div class="col-12 col-lg-3 mb-4">
+
+
+      <div class="card card-custom shadow-lg rounded-3 shadow-lg bg-white">
+        <div class="card-body">
+          <button class="btn btn-custom w-100" style="background-color: var(--ceyan);"(click)="navigateToVideos(CrsId)">Course Videos</button>
+          <button class="btn btn-custom w-100 mt-3" style="background-color: var(--ceyan);"  (click)="navigateToQuiz(CrsId)"  [disabled]="!Course.states?.hasFinishedallVideos">Course Quizzes</button>
+
+          <button type="button" class="btn btn-secondary mt-3 w-100" style="background-color: var(--ceyan);" (click)="navigateToCertificate(CrsId)"  [disabled]="!Course.states?.hasFinishedallVideos||!Course.states?.quizState">Get Completion Certificate</button>
+
+        </div>
+      </div>
+
+
+
+      <!-- <div class="card custom-card shadow-lg rounded-3 mt-5 shadow-lg bg-white">
+        <div class="card-body custom-card-body">
+          <h5 class="">Course Information</h5>
+          <ul class="list-group  mt-4">
+            <li class="list-group-item list-group-item-custom"><i class="fas fa-video"></i> Recorded Videos</li>
+            <li class="list-group-item list-group-item-custom"><i class="fas fa-chalkboard-teacher"></i> Practical
+              Videos</li>
+            <li class="list-group-item list-group-item-custom"><i class="fas fa-chart-pie"></i> Infographics</li>
+            <li class="list-group-item list-group-item-custom"><i class="fas fa-award"></i> Completion Certificate</li>
+            <li class="list-group-item list-group-item-custom"><i class="fas fa-star"></i> 4.8 </li>
+          </ul>
+        </div>
+
+
+
+
+
+      </div> -->
+
+      <div class="card instructor-card shadow-lg rounded-3 text-center mt-5" (click)="navigatetoteacher()">
+        <div class="card-body instructor-card-body">
+          <img
+            [src]="Course.teacherDataDto?.pictureUrl"
+            class="rounded-pill instructor-img mb-3" alt="Instructor Image">
+          <h5 class="instructor-name">{{Course.teacherDataDto?.fname}} {{Course.teacherDataDto?.lname}}</h5>
+          <p class="instructor-description">{{Course.teacherDataDto?.career}}</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</ng-container>

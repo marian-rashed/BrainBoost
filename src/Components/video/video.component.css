@@ -1,0 +1,235 @@
+.hed {
+  background: linear-gradient(to right,rgb(1, 109, 104),var(--ceyan));
+  color: white;
+  padding: 15px;
+  width: 100%;
+}
+.hed .btn-back {
+  color: white;
+  border: 1px solid white;
+}
+.hed .btn-back:hover {
+  background-color: white;
+  color: #4e0000;
+}
+.header-title {
+  margin: 0 auto;
+  text-align: start;
+  flex: 1;
+}
+
+
+
+.course-card {
+  border: none;
+  margin-top: 2rem;
+}
+.course-card-img {
+  max-height: 300px;
+  object-fit: cover;
+}
+.course-card-body {
+  padding: 1.5rem;
+}
+.course-card-title {
+/* font-size: 1.5rem; */
+  /* font-weight: bold; */
+  background-color: var(--ceyan);
+}
+
+
+
+
+
+.list-group-item {
+  display: flex;
+  align-items: center;
+}
+.list-group-item i {
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+
+
+
+
+
+.video-section {
+  background-color: #f8f9fa;
+  padding: 20px;
+
+}
+.video-title {
+
+  margin-bottom: 20px;
+  text-align: center;
+}
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  background: #000;
+  margin-bottom: 20px;
+}
+ video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.handlepart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.handlepart i
+ {
+  margin-left: 65px;
+ }
+.video-label {
+  margin-right: 15px; /* Adjust as needed for spacing */
+  cursor: pointer;
+
+}
+
+.video-input {
+  margin-left: 15px; /* Adjust as needed for spacing */
+  cursor: pointer;
+
+}
+/* discuss */
+.card {
+  border: none;
+ 
+
+}
+
+.chat {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.chat li {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dotted #B3A9A9;
+}
+
+.rounded-circle {
+  max-height: 50px;
+}
+/* comment */
+.comment {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.comment img {
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.comment .comment-body {
+  background: #f9f9f9;
+  border-radius: 5px;
+  padding: 10px;
+  flex: 1;
+}
+
+.comment .comment-body .comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.comment .comment-body .comment-header .name {
+  font-weight: bold;
+}
+
+.comment .comment-body .comment-header .timestamp {
+  font-size: 0.8em;
+  color: #777;
+}
+
+@media (min-width: 576px) {
+  .video-title {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 768px) {
+  .video-title {
+    font-size: 2.5rem;
+  }
+}
+@media (min-width: 992px) {
+  .video-title {
+    font-size: 3rem;
+  }
+}
+/* Custom media queries for buttons */
+@media (max-width: 575.98px) {
+  .btn-responsive {
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+  }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .btn-responsive {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .btn-responsive {
+    font-size: 1.125rem;
+    padding: 0.875rem 1.25rem;
+  }
+}
+@media (min-width: 992px) {
+  .btn-responsive {
+    padding: .5rem 1rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

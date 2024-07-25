@@ -1,0 +1,120 @@
+<div class="container">
+  <h1>Course Photo</h1>
+  <h2>Upload the Course Photo You want</h2>
+  <div class="form-container shadow-5">
+    <div class="form-group">
+      <img [src]="photoUrl" alt="" />
+      <div class="class d-flex justify-content-end text-center">
+        <button type="button" class="btn btn-outline-primary">
+          Edit picture
+          <input
+            type="file"
+            class="form-control"
+            id="inputGroupFile02"
+            (change)="handlePhotoInput($event)"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+  <h1>Course chapters</h1>
+  <h2>Upload the chapters You want</h2>
+  <br />
+  <div class="form-container shadow-5">
+    <div
+      *ngFor="let Lecture of courseScheduleForm.controls; index as lectureIndex"
+    >
+      <h4>chapter</h4>
+      <input
+        name="title"
+        type="text"
+        class="form-control"
+        id="inputGroupFile02"
+        [formControl]="getChapter(lectureIndex)"
+      />
+      <br />
+      <div class="form-group">
+        <h4>lecture</h4>
+        <input
+          name="title"
+          type="text"
+          class="form-control"
+          id="inputGroupFile02"
+          [formControl]="getLectureTitleControl(lectureIndex)"
+        />
+      </div>
+      <div class="form-group">
+        <video [src]="Lecture.controls['videoUrl'].value" controls></video>
+      </div>
+      <div class="class d-flex justify-content-end text-center">
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          id="replaceLectureButton"
+        >
+          Replace lecture
+          <input
+            (change)="handleVideo($event, lectureIndex)"
+            type="file"
+            class="form-control"
+            id="inputGroupFile02"
+          />
+        </button>
+      </div>
+    </div>
+    <div
+      *ngFor="
+        let addedVideos of addedVideosForm.controls;
+        index as addedVideosIndex
+      "
+    >
+      <h4>chapter</h4>
+      <input
+        name="title"
+        type="number"
+        class="form-control"
+        id="inputGroupFile02"
+        [formControl]="getAddedVideoChapter(addedVideosIndex)"
+      />
+      <br />
+      <div class="form-group">
+        <h4>lecture</h4>
+        <input
+          name="title"
+          type="text"
+          class="form-control"
+          id="inputGroupFile02"
+          [formControl]="getAddedVideoTitleControl(addedVideosIndex)"
+        />
+      </div>
+      <div class="form-group">
+        <video controls></video>
+      </div>
+      <div class="class d-flex justify-content-end text-center">
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          id="replaceLectureButton"
+          [disabled]="addedVideos.invalid"
+        >
+          Upload lecture
+          <input
+            (change)="uploadLecture($event, addedVideosIndex)"
+            type="file"
+            class="form-control"
+            id="inputGroupFile02"
+          />
+        </button>
+      </div>
+    </div>
+    <div class="class d-flex justify-content-end text-center">
+      <button
+        (click)="addLecture()"
+        type="button"
+        class="btn btn-outline-primary"
+      >
+        Add lecture
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,149 @@
+<!-- <div class="container">
+  <h1>Course Photo</h1>
+  <h2>Upload the Course Photo You want</h2>
+  <div class="form-container shadow-5">
+    <div class="form-group">
+      <input
+        (change)="handlePhotoInput($event)"
+        [type]="'file'"
+        class="form-control"
+        id="inputGroupFile02"
+      />
+      <label class="form-control" for="inputGroupFile02"
+        >Course Photo</label
+      >
+    </div>
+  </div>
+  <h1>Course Videos</h1>
+  <h2>Upload the Lecture Videos You want</h2>
+  <div
+    *ngFor="let Lecture of courseMediaForm.controls; index as i"
+    class="form-container shadow-5"
+    [formGroup]="Lecture"
+  >
+    <h3>Lecture {{ i + 1 }}</h3>
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        id="inputGroupFile02"
+        formControlName="title"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        [type]="'file'"
+        class="form-control"
+        id="inputGroupFile02"
+        (change)="handleVideoInput($event, i)"
+      />
+      <label class="form-control" for="inputGroupFile02"
+        >Upload Course Video</label
+      >
+    </div>
+    <div class="class d-flex justify-content-end">
+      <button
+        type="button"
+        class="btn btn-outline-primary text-center"
+        (click)="courseMediaForm.removeAt(i)"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+  <div class="class d-flex justify-content-end text-center">
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      (click)="AddLectureForm()"
+    >
+      Add Lecture
+    </button>
+  </div>
+</div> -->
+<div class="container">
+  <h1>Course Photo</h1>
+  <h2>Upload the Course Photo You want</h2>
+  <div class="form-container shadow-5">
+    <div class="form-group">
+      <input
+        (change)="handlePhotoInput($event)"
+        [type]="'file'"
+        class="form-control"
+        id="inputGroupFile02"
+      />
+      <label class="form-control" for="inputGroupFile02">Course Photo</label>
+    </div>
+  </div>
+  <h1>Course chapters</h1>
+  <h2>Upload the chapters You want</h2>
+  <br />
+  <div
+    *ngFor="let chapter of courseScheduleForm.controls; index as chapterIndex"
+    class="form-container shadow-5"
+    [formGroup]="getChapter(chapterIndex)"
+  >
+    <h3>chapter {{ chapterIndex + 1 }}</h3>
+    <div
+      *ngFor="let Lecture of chapter.controls; index as lectureIndex"
+      [formGroup]="getLecture(chapterIndex, lectureIndex)"
+    >
+      <h4>Lecture {{ lectureIndex + 1 }}</h4>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="inputGroupFile02"
+          formControlName="title"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          [type]="'file'"
+          class="form-control"
+          id="inputGroupFile02"
+          (change)="handleVideoInput($event, chapterIndex, lectureIndex)"
+        />
+        <label class="form-control" for="inputGroupFile02"
+          >Upload Course Video</label
+        >
+      </div>
+      <div class="class d-flex justify-content-end text-center">
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          (click)="DeleteLecture(chapterIndex,lectureIndex)"
+        >
+          Delete lecture
+        </button>
+      </div>      
+    </div>
+    <div class="class d-flex justify-content-end text-center">
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        (click)="AddLecture(chapterIndex)"
+      >
+        Add lecture
+      </button>
+    </div>    
+    <div class="class d-flex justify-content-start text-center">
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        (click)="DeleteChapter(chapterIndex)"
+      >
+        delete chapter
+      </button>
+    </div>    
+  </div>
+  <div class="class d-flex justify-content-start text-center">
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      (click)="AddChapter()"
+    >
+      Add chapter
+    </button>
+  </div>  
+</div>

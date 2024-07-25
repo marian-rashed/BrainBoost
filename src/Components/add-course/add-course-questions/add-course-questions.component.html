@@ -1,0 +1,113 @@
+<div class="container">
+  <h1>Course Quizz</h1>
+  <h2>Upload the course questions You want</h2>
+  <div
+    *ngFor="
+      let question of courseQuestionsForm.controls;
+      index as questionIndex
+    "
+    class="form-container shadow-5"
+    [formGroup]="question"
+  >
+    <h3>Question {{ questionIndex + 1 }}</h3>
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        id="inputGroupFile02"
+        formControlName="headLine"
+      />
+    </div>
+    <br />
+    <div class="form-group">
+      <div class="form-group">
+        <h3>
+          Add choices at least two choice and select which is the right answer
+        </h3>
+        <div
+          *ngFor="
+            let choice of getAnswers(questionIndex).controls;
+            index as answerIndex
+          "
+          class="d-flex justify-content-space-between align-items-center w-100 mb-3"
+        >
+          <h4 class="mb-0">Choice number {{ answerIndex + 1 }}</h4>
+          <input
+            type="text"
+            class="form-control w-25 mx-2"
+            id="inputGroupFile02"
+            [formControl]="getAnswerControl(questionIndex, answerIndex)"
+          />
+          <div class="form-check mx-2">
+            <input
+              name="righAnswer{{ questionIndex }}"
+              (click)="setTheRightAnswer(questionIndex, answerIndex)"
+              class="form-check-input"
+              type="radio"
+              id="flexCheckDefault{{ questionIndex }}"
+            />
+            <label
+              class="form-check-label"
+              for="flexCheckDefault{{ questionIndex }}"
+            >
+              The right answer
+            </label>
+          </div>
+          <div class="btns d-flex gap-2">
+            <button
+              class="btn btn-outline-primary"
+              (click)="deleteChoice(questionIndex, answerIndex)"
+            >
+              Delete choice
+            </button>
+          </div>
+        </div>
+        <br />
+      </div>
+      <br />
+      <div class="d-flex flex-row-reverse">
+        <button
+          (click)="addChoice(questionIndex)"
+          type="button"
+          class="btn btn-outline-primary text-center"
+        >
+          Add choice
+        </button>
+      </div>
+    </div>
+    <div
+      class="d-flex justify-content-space-between align-items-center w-100 mb-3"
+    >
+      <h4 class="mb-0">Write the question degree</h4>
+      <input
+        formControlName="degree"
+        type="number"
+        class="form-control w-25 mx-2"
+        id="inputGroupFile02"
+      />
+    </div>
+    <hr />
+  </div>
+  <br />
+  <br />
+  <div class="class d-flex justify-content-end text-center">
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      (click)="addNewQuestion()"
+    >
+      Add Question
+    </button>
+  </div>
+  <div
+  class="d-flex justify-content-space-between align-items-center w-100 mb-3"
+>
+  <h4 class="mb-0">select the minimum degree of the quizz</h4>
+  <input
+    type="number"
+    class="form-control w-25 mx-2"
+    id="inputGroupFile02"
+  />
+  <h4 class="mb-0"> from {{getCourseQuizzDegree()}} </h4>
+</div>
+</div>

@@ -1,0 +1,124 @@
+.carousel {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0;
+}
+.carousel-item video {
+  width: 100% !important;
+  height: auto;
+  max-height: 66vh;
+  object-fit: cover;
+}
+
+.carousel-caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100% !important;
+  background-color: rgba(
+    4,
+    20,
+    114,
+    0.322
+  ); /* Gray background with some transparency */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align captions to the start (left) */
+  padding: 40px;
+  text-align: left; /* Align text to the left */
+  color: #fff; /* Text color */
+}
+
+.carousel-caption > div {
+  max-width: 80%; /* Limit caption width for readability */
+}
+
+.carousel-caption h5,
+.carousel-caption p {
+  margin: 30px;
+  margin-left: 50px;
+  color: #fff; /* Text color */
+  font-size: 2.2rem; /* Adjust font size for readability */
+}
+
+.btn-container {
+  margin-top: 30px;
+  margin-left: 50px;
+}
+
+.btn-container .btn {
+  margin-right: 10px;
+  z-index: 99;
+  padding: 10px 20px;
+}
+
+@media (max-width: 768px) {
+  .carousel-caption {
+    padding: 20px;
+    font-size: 0.8rem; /* Adjust font size for smaller screens */
+  }
+  .carousel-caption h5,
+  .carousel-caption p {
+    margin: 15px;
+    margin-left: 25px;
+    color: #fff; /* Text color */
+    font-size: 1.2rem; /* Adjust font size for readability */
+  }
+  .btn-container {
+    margin-top: 15px;
+    margin-left: 25px;
+  }
+  .btn-container .btn {
+    font-size: 0.65rem;
+    padding: 8px 16px; /* Adjust button size for smaller screens */
+  }
+}
+
+.course-card {
+  border: none;
+  transition: transform 0.3s ease-in-out;
+}
+.course-card:hover {
+  transform: translateY(-10px);
+}
+.course-card .card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.course-card .card-text {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+.course-card .price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ff5a5f;
+}
+.course-card .original-price {
+  font-size: 0.9rem;
+  color: #6c757d;
+  text-decoration: line-through;
+  margin-left: 10px;
+}
+.rating {
+  color: #f39c12;
+}
+.course-card img {
+  width: 90%;
+  height: 50%;
+}
+.btn-read-more,
+.loadMore {
+  background-color: var(--ceyan);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+.btn-read-more:hover,
+.loadMore:hover {
+  background-color: var(--blue-900);
+}

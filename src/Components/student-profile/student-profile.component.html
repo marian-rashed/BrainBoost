@@ -1,0 +1,40 @@
+<div class="container ">
+    <h2 class="mb-4">Edit Student</h2>
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()" class="mb-4">
+      <div class="form-group">
+        <label for="Fname">First Name</label>
+        <input id="Fname" class="form-control" formControlName="Fname">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="Lname">Last Name</label>
+        <input id="Lname" class="form-control" formControlName="Lname">
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary" [disabled]="studentForm.invalid">Update</button>
+    </form>
+  
+    <h3 class="mb-4">Change Password</h3>
+    <form [formGroup]="passwordForm" (ngSubmit)="onChangePassword()" class="mb-4">
+      <div class="form-group">
+        <label for="CurrentPassword">Current Password</label>
+        <input id="CurrentPassword" type="password" class="form-control" formControlName="CurrentPassword">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="NewPassword">New Password</label>
+        <input id="NewPassword" type="password" class="form-control" formControlName="NewPassword">
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary" [disabled]="passwordForm.invalid">Change Password</button>
+    </form>
+  
+    <h3 class="mb-4">Upload Image</h3>
+    <form [formGroup]="imageForm">
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" (change)="onUploadImage($event)">
+        <label class="custom-file-label" for="customFile">Choose file</label>
+      </div>
+    </form>
+  </div>
+  

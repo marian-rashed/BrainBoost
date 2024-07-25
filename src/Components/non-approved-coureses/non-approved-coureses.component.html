@@ -1,0 +1,22 @@
+<div class="container my-4">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    <div class="col" *ngFor="let Course of NotApprovedCourses | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+      <div class="card course-card border-0 shadow-lg rounded-3">
+        <img [src]="Course.photoUrl" class="card-img-top" alt="Course Image" width="150" height="150">
+        <div class="card-body">
+          <h5 class="card-title">{{ Course.name }}</h5>
+          <p class="card-text">{{ Course.description }}</p>
+          <p class="card-text course-duration">
+            <i class="fa-regular fa-clock me-2"></i>
+            <small>Duration: {{ Course.duration }} weeks</small>
+          </p>
+          <div class="btn-group">
+            <button type="button" class="btn Approve me-4" (click)="ApproveCourse(Course.id)">Approve</button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+</div>

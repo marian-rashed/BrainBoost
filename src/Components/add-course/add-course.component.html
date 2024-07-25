@@ -1,0 +1,77 @@
+<mat-stepper [linear]="true" #stepper>
+  <mat-step [stepControl]="courseDetailsForm">
+    <form [formGroup]="courseDetailsForm">
+      <ng-template matStepLabel>Course Details</ng-template>
+      <app-add-course-details
+        [courseDetailsForm]="courseDetailsForm"
+      ></app-add-course-details>
+      <button
+        mat-button
+        matStepperNext
+        class="btn btn-secondary"
+        [disabled]="courseDetailsForm.invalid"
+      >
+        Next
+      </button>
+    </form>
+  </mat-step>
+  <mat-step [optional]="false">
+    <form>
+      <ng-template matStepLabel
+        >What the student will learn in this course</ng-template
+      >
+      <app-add-course-what-to-learn
+        [whatToLearnForm]="courseWhatToLearnForm"
+      ></app-add-course-what-to-learn>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button
+          mat-button
+          matStepperNext
+          [disabled]="courseWhatToLearnForm.invalid"
+        >
+          Next
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [optional]="false">
+    <form>
+      <ng-template matStepLabel>Add Qizzes for the course</ng-template>
+      <app-add-course-questions
+        [courseQuestionsForm]="courseQuestionsForm"
+      ></app-add-course-questions>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button
+          mat-button
+          matStepperNext
+          [disabled]="courseQuestionsForm.invalid"
+        >
+          Next
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="courseMediaForm">
+    <form>
+      <ng-template matStepLabel>Add course videos</ng-template>
+      <app-add-course-videos
+        [coursePhoto]="coursePhoto"
+        [courseScheduleForm]="courseScheduleForm"
+      >
+      </app-add-course-videos>
+    </form>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button
+        mat-button
+        matStepperNext
+        (click)="addCourse()"
+        [disabled]="courseScheduleForm.invalid || coursePhoto.invalid"
+      >
+        Upload course
+      </button>
+    </div>
+  </mat-step>
+</mat-stepper>

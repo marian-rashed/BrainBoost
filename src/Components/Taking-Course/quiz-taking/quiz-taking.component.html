@@ -1,0 +1,31 @@
+<div class="quiz-container">
+<h3>multible choice</h3>
+<ng-container *ngIf="Quiz" >
+<ng-container *ngFor="let question of Quiz.question" >
+  <ng-container *ngIf="question.type==0" >
+  <textarea name="" id="">{{question.content}}</textarea><br>
+  <ng-container *ngFor="let item of question.answers" >
+
+    <input type="radio" [name]="'question-' + question.id"  id="" [value]="item.id"(change)="handleCorrectAnswer(item.id,question.id)" >
+    <label for="">{{item.content}}</label><br>
+
+  </ng-container>
+</ng-container>
+</ng-container>
+</ng-container>
+<h3>true or false</h3>
+<ng-container *ngIf="Quiz" >
+<ng-container *ngFor="let question of Quiz.question" >
+  <ng-container *ngIf="question.type==1" >
+  <textarea name="" id="">{{question.content}}</textarea><br>
+  <ng-container *ngFor="let item of question.answers" >
+
+    <input type="radio" [name]="'question-' + question.id"  id="" [value]="item.id"(change)="handleCorrectAnswer(item.id,question.id)" >
+    <label for="">{{item.content}}</label><br>
+
+  </ng-container>
+</ng-container>
+</ng-container>
+</ng-container>
+<button (click)="handleSuccess()">finish</button>
+</div>

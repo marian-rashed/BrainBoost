@@ -1,0 +1,27 @@
+<div class="container mt-5">
+  <h2 class="mb-4">Students Table</h2>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Number Of Certificates</th>
+        <th scope="col">Number Of Enrolled Courses</th>
+        <th scope="col">Number Of Saved Courses</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of ListOfStudents | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+        <td>{{ student.fname }} {{ student.lname }}</td>
+        <td>{{ student.numOfCertificates }}</td>
+        <td>{{ student.numOfCrsEnrolled }}</td>
+        <td>{{ student.numOfCrsSaved }}</td>
+        <td>
+          <button type="button" class="btn btn-danger me-2" (click)="DeleteStudent(student.id)">Delete</button>
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+</div>

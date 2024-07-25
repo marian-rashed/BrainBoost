@@ -1,0 +1,29 @@
+<h2>  Your Courses Earnings</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Course Name</th>
+          <th>Price</th>
+          <th>Total Earnings</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let course of teacherCourses">
+          <td>{{course['name']}}</td>
+          <td>{{course['price']}}</td>
+          <td>{{course['totalInstructorEarnings']}} $</td>
+        </tr>
+        <!-- <tr>
+          <td>Data Science Essentials</td>
+          <td>$79.99</td>
+          <td>$23,997.00</td>
+        </tr>
+        <tr>
+          <td>Machine Learning Fundamentals</td>
+          <td>$99.99</td>
+          <td>$29,997.00</td>
+        </tr> -->
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+  

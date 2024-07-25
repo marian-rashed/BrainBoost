@@ -1,0 +1,119 @@
+<div class="container centered-form">
+  <div class="container centered-form">
+    <form class="row g-3" [formGroup]="aboutTeacherForm" (ngSubmit)="submit()">
+      <div class="col-md-12">
+        <label for="inputEmail4" class="form-label">Upload your photo</label>
+        <input
+          (change)="handlePhotoInput($event)"
+          type="file"
+          class="form-control"
+          id="inputEmail4"
+        />
+      </div>
+      <div class="col-md-12">
+        <label for="inputEmail4" class="form-label"
+          >Write your job titles</label
+        >
+        <input
+          formControlName="jobTitles"
+          type="email"
+          class="form-control"
+          id="inputEmail4"
+        />
+        <div
+          *ngIf="
+            aboutTeacherForm.controls.jobTitles.invalid && errorsExistedinsubmit
+          "
+        >
+          <small *ngIf="aboutTeacherForm.controls.jobTitles.errors!['required']"
+            >required</small
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label">Write your address</label>
+          <input
+            formControlName="address"
+            type="text"
+            class="form-control"
+            id="inputEmail4"
+          />
+          <div
+            *ngIf="
+              aboutTeacherForm.controls.address.invalid && errorsExistedinsubmit
+            "
+          >
+            <small *ngIf="aboutTeacherForm.controls.address.errors!['required']"
+              >required</small
+            >
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label">Write your phone</label>
+          <input
+            formControlName="phone"
+            type="text"
+            class="form-control"
+            id="inputEmail4"
+          />
+          <div
+            *ngIf="
+              aboutTeacherForm.controls.phone.invalid && errorsExistedinsubmit
+            "
+          >
+            <small *ngIf="aboutTeacherForm.controls.phone.errors!['required']"
+              >required</small
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <label for="inputEmail4" class="form-label"
+          >How many years of experience ?</label
+        >
+        <input
+          formControlName="yearsOfExperience"
+          type="number"
+          class="form-control"
+          id="inputEmail4"
+        />
+        <div
+          *ngIf="
+            aboutTeacherForm.controls.yearsOfExperience.invalid &&
+            errorsExistedinsubmit
+          "
+        >
+          <small
+            *ngIf="
+              aboutTeacherForm.controls.yearsOfExperience.errors!['required']
+            "
+            >required</small
+          >
+        </div>
+      </div>
+      <div class="col-12">
+        <label for="inputAddress" class="form-label">About you :</label>
+        <textarea
+          formControlName="aboutYou"
+          class="form-control"
+          id="inputAddress"
+          placeholder="Brief about you"
+          rows="3"
+        ></textarea>
+        <div
+          *ngIf="
+            aboutTeacherForm.controls.aboutYou.invalid && errorsExistedinsubmit
+          "
+        >
+          <small *ngIf="aboutTeacherForm.controls.aboutYou.errors!['required']"
+            >required</small
+          >
+        </div>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

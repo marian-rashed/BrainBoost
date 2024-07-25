@@ -1,0 +1,20 @@
+/* Global styles */
+.mat-dialog-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: aqua;
+    color: white;
+  }
+  
+  h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+    
+  }
+  
+  button {
+    margin-top: 15px;
+  }
+  

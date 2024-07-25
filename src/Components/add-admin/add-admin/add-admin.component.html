@@ -1,0 +1,282 @@
+<form [formGroup]="UserRegisterForm" class="mx-1 mx-md-4 mb-2">
+    <div class="d-flex flex-row align-items-center mb-2">
+      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+      <div
+        data-mdb-input-init
+        class="form-outline flex-fill mb-0"
+      >
+        <label class="form-label" for="form3Example1c"
+          >Admin userName</label
+        >
+        <input
+          type="text"
+          id="form3Example1c"
+          class="form-control"
+          formControlName="userName"
+          name="userName"
+        />
+        <div
+          *ngIf="
+            UserRegisterForm.controls['userName'].invalid &&
+            (UserRegisterForm.controls['userName'].dirty ||
+              UserRegisterForm.controls['userName'].touched)
+          "
+        >
+          <small
+            *ngIf="
+              UserRegisterForm.controls['userName'].errors![
+                'required'
+              ]
+            "
+            >Admin is required.</small
+          >
+          <small
+            *ngIf="
+              UserRegisterForm.controls['userName'].errors![
+                'minlength'
+              ]
+            "
+            >Admin should be more than 10 char.</small
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-row align-items-center mb-2">
+      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+      <div
+        data-mdb-input-init
+        class="form-outline flex-fill mb-0"
+      >
+        <label class="form-label" for="firstName"
+          >Admin first Name</label
+        >
+        <input
+          type="text"
+          id="firstName"
+          class="form-control"
+          formControlName="firstName"
+          name="firstName"
+        />
+        <div
+          *ngIf="
+            UserRegisterForm.controls['firstName'].invalid &&
+            (UserRegisterForm.controls['firstName'].dirty ||
+              UserRegisterForm.controls['firstName'].touched)
+          "
+        >
+          <small
+            *ngIf="
+              UserRegisterForm.controls['firstName'].errors![
+                'required'
+              ]
+            "
+            >Admin is required.</small
+          >
+          <small
+            *ngIf="
+              UserRegisterForm.controls['firstName'].errors![
+                'minlength'
+              ]
+            "
+            >Admin should be more than 5 char.</small
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-row align-items-center mb-2">
+      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+      <div
+        data-mdb-input-init
+        class="form-outline flex-fill mb-0"
+      >
+        <label class="form-label" for="lastName"
+          >Admin last Name</label
+        >
+        <input
+          type="text"
+          id="lastName"
+          class="form-control"
+          formControlName="lastName"
+          name="lastName"
+        />
+        <div
+          *ngIf="
+            UserRegisterForm.controls['lastName'].invalid &&
+            (UserRegisterForm.controls['lastName'].dirty ||
+              UserRegisterForm.controls['lastName'].touched)
+          "
+        >
+          <small
+            *ngIf="
+              UserRegisterForm.controls['lastName'].errors![
+                'required'
+              ]
+            "
+            >lastName is required.</small
+          >
+          <small
+            *ngIf="
+              UserRegisterForm.controls['lastName'].errors![
+                'minlength'
+              ]
+            "
+            >Admin should be more than 5 char.</small
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-row align-items-center mb-2">
+      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+      <div
+        data-mdb-input-init
+        class="form-outline flex-fill mb-0"
+      >
+        <label class="form-label" for="form3Example3c"
+          >Admin Email</label
+        >
+        <input
+          type="email"
+          id="form3Example3c"
+          class="form-control"
+          formControlName="email"
+          name="email"
+        />
+        <div
+          *ngIf="
+            UserRegisterForm.controls['email'].invalid &&
+            (UserRegisterForm.controls['email'].dirty ||
+              UserRegisterForm.controls['email'].touched)
+          "
+        >
+          <small
+            *ngIf="
+              UserRegisterForm.controls['email'].errors![
+                'required'
+              ]
+            "
+            >email is required.</small
+          >
+          <small
+            *ngIf="
+              UserRegisterForm.controls['email'].errors![
+                'pattern'
+              ]
+            "
+            >Please text in Email Pattern</small
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-row align-items-center mb-2">
+      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+      <div
+        data-mdb-input-init
+        class="form-outline flex-fill mb-0"
+      >
+        <label class="form-label" for="form3Example4c"
+          >Password</label
+        >
+        <input
+          type="password"
+          id="form3Example4c"
+          class="form-control"
+          formControlName="password"
+          name="password"
+        />
+        <div
+          *ngIf="
+            UserRegisterForm.controls['password'].invalid &&
+            (UserRegisterForm.controls['password'].dirty ||
+              UserRegisterForm.controls['password'].touched)
+          "
+        >
+          <small
+            *ngIf="
+              UserRegisterForm.controls['password'].errors![
+                'required'
+              ]
+            "
+            >Password is required.</small
+          >
+          <small
+            *ngIf="
+              UserRegisterForm.controls['password'].errors![
+                'pattern'
+              ]
+            "
+            >Must Have at Least 1 digit , one Alpha , one non -
+            alpha and at least of 13 digit</small
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-row align-items-center mb-2">
+      <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+      <div
+        data-mdb-input-init
+        class="form-outline flex-fill mb-0"
+      >
+        <label class="form-label" for="form3Example4cd"
+          >Repeat  password</label
+        >
+        <input
+          type="password"
+          id="form3Example4cd"
+          formControlName="confirmPassword"
+          class="form-control"
+        />
+        <div
+          *ngIf="
+            UserRegisterForm.controls['confirmPassword']
+              .invalid &&
+            (UserRegisterForm.controls['confirmPassword'].dirty ||
+              UserRegisterForm.controls['confirmPassword']
+                .touched)
+          "
+        >
+          <small
+            *ngIf="
+              UserRegisterForm.controls['confirmPassword']
+                .errors!['required']
+            "
+            >Password is required.</small
+          >
+        </div>
+        <small
+          *ngIf="UserRegisterForm.errors?.['passwordMismatch'] && (UserRegisterForm.controls['confirmPassword']?.dirty || UserRegisterForm.controls['confirmPassword']?.touched)"
+        >
+          Passwords do not match.
+        </small>
+      </div>
+    </div>
+
+    <div class="d-flex flex-row align-items-center mb-2">
+      <div
+        data-mdb-input-init
+        class="form-outline flex-fill mb-0"
+      >
+        
+        </div>
+      </div>
+   
+
+    
+
+    <div class="d-flex justify-content-center mx-4 mb-2 mb-lg-4">
+      <button
+        [disabled]="UserRegisterForm.invalid"
+        type="button"
+        data-mdb-button-init
+        data-mdb-ripple-init
+        class="btn btn-primary btn-lg"
+        (click)="register()"
+      >
+        Add
+      </button>
+    </div>
+  </form>

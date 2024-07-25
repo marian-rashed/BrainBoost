@@ -1,0 +1,17 @@
+
+
+
+
+<div class="container-fluid mt-5 shadow-lg rounded-3 p-3">
+  <h2 class="mb-4">Course Reviews</h2>
+  <div class="review-card d-flex align-items-start" *ngFor="let item of reviews">
+      <img [src]="item.photoUrl" class="rounded-pill me-3" alt="assets/User.png">
+      <div>
+          <p class="mb-1">{{item.content}}</p>
+          <div class="rating-stars">
+              <i class="fas fa-star" *ngFor="let i of item.stars"></i>
+          </div>
+      </div>
+  </div>
+
+</div>

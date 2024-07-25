@@ -1,0 +1,19 @@
+<div class="teacher-card p-3 border-0 rounded-3 shadow-sm bg-white">
+  <img
+    [src]="
+      teacherInfo['pictureUrl'] != null
+        ? teacherInfo['pictureUrl']
+        : 'https://icons.veryicon.com/png/o/business/educational-administration-related/teacher-11.png'
+    "
+    alt="Teacher Image"
+    class="teacher-img rounded-circle shadow-lg border"
+  />
+  <div class="teacher-details ms-3"> <!-- Reduced the margin-left space -->
+    <h2 class="text-primary">{{ teacherInfo["fname"] }} {{ teacherInfo["lname"] }}</h2>
+    <h3><strong>Profession:</strong> {{ teacherInfo["career"] }}</h3> <!-- Removed the text-secondary class -->
+    <p class="mb-1"><strong>Years of Experience:</strong> {{ teacherInfo["yearsOfExperience"] }}</p>
+    <p class="mb-1"><strong>Phone Number:</strong> {{ teacherInfo["phoneNumber"] }}</p>
+    <p class="mt-3"><strong>Description:</strong></p>
+    <p>{{ teacherInfo["aboutYou"] }}</p>
+  </div>
+</div>

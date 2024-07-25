@@ -1,0 +1,136 @@
+<!-- Dashboard content -->
+
+
+
+<!-- Main Content -->
+<div class="">
+  <!-- common analysis  -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-12 mb-4">
+        <div class="card text-center pt-3 rounded-4 border-0 shadow-lg">
+          <div class="card-body">
+            <div class="icon-wrapper bullseye">
+              <i class="fa-solid fa-bullseye fa-2xl fs-1"></i>
+            </div>
+            <h1 class="mt-2">{{NumOfStudent}}</h1>
+            <p class="card-text mt-3 text-dark">Total Students</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-12 mb-4">
+        <div class="card text-center pt-3 rounded-4 border-0 shadow-lg">
+          <div class="card-body">
+            <div class="icon-wrapper book">
+              <i class="fa-solid fa-book-open fa-2xl fs-1"></i>
+            </div>
+            <h1 class="mt-2">{{NumOfCourse}}</h1>
+            <p class="card-text mt-3 text-dark">Total Courses</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-12 mb-4">
+        <div class="card text-center pt-3 rounded-4 border-0 shadow-lg">
+          <div class="card-body">
+            <div class="icon-wrapper check">
+              <i class="fa-solid fa-check fa-2xl fs-1"></i>
+            </div>
+            <h1 class="mt-2">{{NumOfTeacher}}</h1>
+            <p class="card-text mt-3 text-dark">Total Teachers</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-12 mb-4">
+        <div class="card text-center pt-3 rounded-4 border-0 shadow-lg">
+          <div class="card-body">
+            <div class="icon-wrapper people">
+              <i class="fa-solid fa-people-group fa-2xl fs-1"></i>
+            </div>
+            <h1 class="mt-2">{{NumOfEnrolledCourses}}</h1>
+            <p class="card-text mt-3 text-dark">Enrolled Courses</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end of common analysis -->
+</div>
+
+
+
+<!-- top instructors  -->
+
+<div class=" mt-5 shadow-lg rounded-3 bg-white p-3">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="mb-4 p-2">Top Instructors</h2>
+    </div>
+    <!-- First Instructor -->
+    <div class="col-md-6" *ngFor="let Teacher of TopTeacher">
+      <div class="instructor-card d-flex align-items-center shadow-lg rounded-3 border-0">
+        <img [src]="Teacher.pictureUrl" alt="Instructor 1" class="instructor-img me-3">
+        <div class="instructor-info">
+          <h5 class="mb-1">{{Teacher.fname}} {{Teacher.lname}}</h5>
+          <p class="mb-0 text-muted">{{Teacher.career}}</p>
+        </div>
+        <div class="ms-auto rounded-pill follow p-1">
+          <i class="fa-solid fa-plus fa-2xl follow-icon"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of top instructors section -->
+
+
+
+<!-- current courses  -->
+<div class="container mt-5 shadow-lg rounded-3 bg-white p-3">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="mb-4">Current Courses</h2>
+    </div>
+    <div class="col-md-4" *ngFor="let Course of CurrentCourses">
+      <div class="course-card  rounded-3 shadow-lg">
+        <div class="course-header">
+          <div>
+            <h4>{{Course.name}}</h4>
+            <div class="course-category">{{Course.description}}</div>
+          </div>
+          <div class="course-icon">
+            <img [src]="Course.photoUrl" alt="C++" >
+          </div>
+        </div>
+        <div class="course-footer">
+          <div class="course-score">{{Course.rate}}</div>
+          <div class="course-days">{{Course.durtion}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- end of current courses  -->
+
+
+
+
+<!-- Top students section -->
+
+<div class="container mt-5 shadow-lg rounded-3 bg-white">
+  <div class="top-students-section border-0">
+    <h2 class="mb-4">Top Students</h2>
+    <div class="row">
+      <div class="col-md-6" *ngFor="let student of TopStudent">
+        <div class="student-card rounded-3 shadow-lg mb-4">
+          <img [src]="student.pictureUrl" alt="{{student.fname}} {{student.lname}}">
+          <div class="student-info">
+            <h5>{{student.fname}} {{student.lname}}</h5>
+            <p>Num of Certificates: {{student.numOfCertificates}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end of top students section  -->
+</div>

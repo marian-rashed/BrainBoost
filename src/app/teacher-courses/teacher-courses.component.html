@@ -1,0 +1,18 @@
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div *ngFor="let course of teacherCourses" class="col">
+        <div class="course-card">
+            <img [src]="course['photoUrl']" alt="Course Image" class="course-img">
+            <div class="course-details">
+                <h3>{{course['name']}}</h3>
+                <p><strong>Category:</strong> {{course['category']}}</p>
+                <p>{{course['description']}}</p>
+                <a [routerLink]="'/EditCourse/'+course['id']"  href="#" class="btn edit">Edit</a>
+            </div>
+        </div>
+    </div>
+    <div class="text-center mt-3">
+        <a routerLink="/addCourse" class="btn" id="add">
+            <button type="button" class="btn btn-secondary">Add new course</button>
+        </a>
+    </div>
+</div>

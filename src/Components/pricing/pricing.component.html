@@ -1,0 +1,54 @@
+<section id="pricing" class="pricing-content section-padding">
+  <div class="container">
+    <div class="section-title text-center">
+      <h2>Pricing Plans</h2>
+      <p>
+        It is a long established fact that a reader will be distracted by the
+        readable content of a page when looking at its layout.
+      </p>
+    </div>
+    <div class="row text-center">
+      @for (plan of plansLst; track $index) {
+      <div
+        class="col-lg-4 col-sm-6 col-xs-12 wow fadeInUp"
+        data-wow-duration="1s"
+        data-wow-delay="0.1s"
+        data-wow-offset="0"
+        style="
+          visibility: visible;
+          animation-duration: 1s;
+          animation-delay: 0.1s;
+          animation-name: fadeInUp;
+        "
+      >
+        <div class="pricing_design">
+          <div class="single-pricing">
+            <div class="price-head">
+              <h2>{{ plan.name }}</h2>
+              <h1>${{ plan.price }}</h1>
+              <span
+                ><b> / {{ plan.duration }} Days</b></span
+              >
+            </div>
+            <ul>
+              <li><b>Course Creation and Management</b></li>
+              <li><b>Analytics and Reporting</b></li>
+              <li><b>Marketing and Promotion Tools</b></li>
+              <li><b>Instructor Dashboard</b></li>
+              <li><b>Community and Interaction</b></li>
+              <li><b>Create Quizzes and Course Certificate</b></li>
+              <li><b>Student Management</b></li>
+            </ul>
+            <a (click)="handleSubscription(plan)" class="price_btn"
+              >Subscribe</a
+            >
+          </div>
+        </div>
+      </div>
+      <!--- END COL -->
+      }
+    </div>
+    <!--- END ROW -->
+  </div>
+  <!--- END CONTAINER -->
+</section>

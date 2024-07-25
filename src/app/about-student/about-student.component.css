@@ -1,0 +1,104 @@
+.teacher-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start; /* Changed to flex-start to reduce space */
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .teacher-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .teacher-img {
+    width: 150px; /* More balanced size */
+    height: 150px; /* More balanced size */
+    object-fit: cover;
+    border-radius: 50%; /* Circular image */
+    margin-right: 20px; /* Adjusted margin */
+  }
+  
+  .teacher-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: #343a40; /* Default text color */
+  }
+  
+  .teacher-details h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .teacher-details h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #343a40; /* Black color for profession */
+  }
+  
+  .teacher-details p {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .teacher-details p strong {
+    color: #343a40;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .teacher-card {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 10px;
+    }
+  
+    .teacher-img {
+      width: 120px; /* Adjusted size for smaller screens */
+      height: 120px; /* Adjusted size for smaller screens */
+      margin-bottom: 20px;
+    }
+  
+    .teacher-details {
+      align-items: center;
+      padding: 0;
+    }
+  
+    .teacher-details h2,
+    .teacher-details h3,
+    .teacher-details p {
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .teacher-card {
+      padding: 10px;
+    }
+  
+    .teacher-img {
+      width: 100px; /* Adjusted size for smaller screens */
+      height: 100px; /* Adjusted size for smaller screens */
+      margin-bottom: 20px;
+    }
+  
+    .teacher-details {
+      text-align: center;
+      align-items: center;
+    }
+  
+    .teacher-details h2,
+    .teacher-details h3,
+    .teacher-details p {
+      text-align: center;
+    }
+  }
+  

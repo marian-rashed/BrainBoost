@@ -1,0 +1,373 @@
+<div class="">
+  <div class="row search-region">
+    <div class="row">
+      <div class="col-12 p-0 search-content mt-5">
+        <div
+          class="row height d-flex justify-content-center align-items-center"
+        >
+          <div class="col-md-8 search-elements">
+            <div class="search rounded-3 shadow-lg">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Search on your favorite course"
+                (input)="GetSearchCourses($event)"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fliud mt-5">
+    <div class="row m-0 course-section d-flex">
+      <!-- Sidebar -->
+      <div class="col-3">
+        <div class="card rounded-5">
+          <div
+            class="card-header filtersearch rounded-top-4 text-center"
+            id="filter-header"
+            data-bs-toggle="collapse"
+            data-bs-target="#filter-body"
+            aria-expanded="true"
+            aria-controls="filter-body"
+            style="cursor: pointer"
+          >
+            <i class="fa-solid fa-sliders ml-2" style="color: #ffffff"></i>
+            Filter
+          </div>
+          <div class="collapse show" id="filter-body">
+            <div class="card-body">
+              <form id="filter-form">
+                <!-- Course Category -->
+                <div class="mb-3">
+                  <label for="category" class="form-label fw-bold"
+                    >Course Category</label
+                  >
+                  <select
+                    class="form-select"
+                    id="category"
+                    name="category"
+                    [(ngModel)]="FilterObj.categoryName"
+                    (change)="getFilteredCoursesWithCatName(selectedCategory)"
+                  >
+                    <option value="all" [defaultSelected]="">All</option>
+                    <option
+                      *ngFor="let category of ListOfCategories"
+                      [value]="category.name"
+                    >
+                      {{ category.name }}
+                    </option>
+                  </select>
+                </div>
+                <!-- Rating -->
+                <div class="mb-3">
+                  <hr class="mt-4" />
+                  <label class="form-label fw-bold">Rating</label>
+                  <div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="rating"
+                        id="rating1"
+                        value="5"
+                        [(ngModel)]="FilterObj.rate"
+                        (change)="getFilteredCoursesWithRate(5)"
+                      />
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="ratings">
+                          <i class="fa fa-star rating-color"></i>
+                          <i class="fa fa-star rating-color"></i>
+                          <i class="fa fa-star rating-color"></i>
+                          <i class="fa fa-star rating-color"></i>
+                          <i class="fa fa-star rating-color"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="rating"
+                        id="rating2"
+                        value="4"
+                        [(ngModel)]="FilterObj.rate"
+                        (click)="getFilteredCoursesWithRate(4)"
+                      />
+                      <div class="ratings">
+                        <i class="fa fa-star rating-color"></i>
+                        <i class="fa fa-star rating-color"></i>
+                        <i class="fa fa-star rating-color"></i>
+                        <i class="fa fa-star rating-color"></i>
+                        <i class="fa fa-star"></i>
+                      </div>
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="rating"
+                        id="rating3"
+                        value="3"
+                        [(ngModel)]="FilterObj.rate"
+                        (click)="getFilteredCoursesWithRate(3)"
+                      />
+                      <div class="ratings">
+                        <i class="fa fa-star rating-color"></i>
+                        <i class="fa fa-star rating-color"></i>
+                        <i class="fa fa-star rating-color"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                      </div>
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="rating"
+                        id="rating2"
+                        value="2"
+                        [(ngModel)]="FilterObj.rate"
+                        (click)="getFilteredCoursesWithRate(2)"
+                      />
+                      <div class="ratings">
+                        <i class="fa fa-star rating-color"></i>
+                        <i class="fa fa-star rating-color"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                      </div>
+                    </div>
+
+                    <!-- Add more ratings as needed -->
+                  </div>
+
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="rating"
+                      id="rating1"
+                      value="1"
+                      [(ngModel)]="FilterObj.rate"
+                      (click)="getFilteredCoursesWithRate(1)"
+                    />
+                    <div class="ratings">
+                      <i class="fa fa-star rating-color"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Video Duration -->
+                <div class="mb-3">
+                  <hr class="mt-4" />
+                  <label class="form-label fw-bold">Course Duration</label>
+                  <div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="duration"
+                        id="duration1"
+                        value="0"
+                        [(ngModel)]="FilterObj.durtion"
+                        (click)="getFilteredCoursesWithDuration(0)"
+                      />
+                      <label class="form-check-label" for="duration1">
+                        Between 0 : 5 Hours
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="duration"
+                        id="duration2"
+                        value="6"
+                        [(ngModel)]="FilterObj.durtion"
+                        (click)="getFilteredCoursesWithDuration(6)"
+                      />
+                      <label class="form-check-label" for="duration2">
+                        Between 6 : 10 Hours
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="duration"
+                        id="duration3"
+                        value="11"
+                        [(ngModel)]="FilterObj.durtion"
+                        (click)="getFilteredCoursesWithDuration(11)"
+                      />
+                      <label class="form-check-label" for="duration3">
+                        Between 11 : 15 Hours
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="duration"
+                        id="duration3"
+                        value="15"
+                        [(ngModel)]="FilterObj.durtion"
+                        (click)="getFilteredCoursesWithDuration(15)"
+                      />
+                      <label class="form-check-label" for="duration3">
+                        More Than 15 Hours
+                      </label>
+                    </div>
+                    <!-- Add more durations as needed -->
+                  </div>
+                </div>
+                <!-- Price -->
+                <div class="mb-3">
+                  <hr class="mt-4" />
+                  <label class="form-label fw-bold">Price</label>
+                  <div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="price"
+                        id="price1"
+                        value="0"
+                        [(ngModel)]="FilterObj.price"
+                        (click)="getFilteredCoursesWithPrice(0)"
+                      />
+                      <label class="form-check-label" for="price1">
+                        Free
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="price"
+                        id="price2"
+                        value="1"
+                        [(ngModel)]="FilterObj.price"
+                        (click)="getFilteredCoursesWithPrice(1)"
+                      />
+                      <label class="form-check-label" for="price2">
+                        Paid
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="d-flex justify-content-center"
+                  (click)="handleResetFilteration()"
+                >
+                  <a class="btn btn-danger w-100">Reset filter</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Sidebar -->
+      <!-- Courses Section -->
+      <div class="col-9">
+        <div class="row">
+          <!-- Check if there are courses to display -->
+          <ng-container *ngIf="ListOfCourses.length > 0; else noCourses">
+            <!-- Example of a course card -->
+            <div
+              class="col-lg-3 col-md-6 courses"
+              *ngFor="let Course of ListOfCourses"
+            >
+              <div class="card course-card rounded-4 shadow-lg">
+                <img
+                  [src]="Course.photoUrl"
+                  class="image-fluid mt-2 rounded-4"
+                  alt="Course 1"
+                  width="95%"
+                  height="95%"
+                />
+                <div class="card-body">
+                  <h5 class="card-title course-title">{{ Course.name }}</h5>
+                  <p class="card-text course-description">
+                    {{ Course.description }}
+                  </p>
+                  <p class="card-text">
+                    <i class="fa-solid fa-star me-2"></i>
+                    <small class="text-muted"
+                      >{{ Course.rate }} ({{ Course.rate }}k reviews)</small
+                    >
+                  </p>
+                  <p class="card-text course-duration">
+                    <i class="fa-regular fa-clock me-2"></i>
+                    <small>Duration: {{ Course.durtion }} Hours</small>
+                  </p>
+                  <a
+                    class="btn enroll-button me-5"
+                    (click)="GoToCourseDetails(Course.id)"
+                    >Details</a
+                  >
+                  <span class="badge price-badge p-2"
+                    >{{ checkPrice(Course.price) }}{{ priceString }}</span
+                  >
+                </div>
+              </div>
+            </div>
+            <!-- Repeat course card for each course in the list -->
+          </ng-container>
+          <!-- Show a message when there are no courses -->
+          <ng-template #noCourses>
+            <div class="col-12 text-center">
+              <p class="text-muted">
+                There are no courses available at the moment.
+              </p>
+            </div>
+          </ng-template>
+        </div>
+        <div class="row mt-3" *ngIf="ListOfCourses.length > 0">
+          <div class="pagination-container">
+            <button
+              mat-icon-button
+              (click)="onPageChange(1)"
+              [disabled]="currentPage === 1"
+            >
+              <mat-icon>First</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              (click)="onPageChange(currentPage - 1)"
+              [disabled]="currentPage === 1"
+            >
+              <mat-icon>Previous</mat-icon>
+            </button>
+            <span>Page {{ currentPage }} of {{ totalPages }}</span>
+            <button
+              mat-icon-button
+              (click)="onPageChange(currentPage + 1)"
+              [disabled]="currentPage === totalPages"
+            >
+              <mat-icon>Next</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              (click)="onPageChange(totalPages)"
+              [disabled]="currentPage === totalPages"
+            >
+              <mat-icon>Last</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- End of Courses Section -->
+    </div>
+  </div>
+</div>

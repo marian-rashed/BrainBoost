@@ -1,0 +1,100 @@
+/* Ensure html and body take full height */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container with full height */
+.container-fluid.xx {
+    min-height: 100vh; /* Ensure it takes at least the full viewport height */
+}
+
+/* Sidebar styles */
+.sidebar {
+    transition: width 0.25s ease-out, height 0.25s ease-out;
+    margin-top: 20px; /* Add top margin */
+    margin-bottom: 20px; /* Add bottom margin */
+    height: calc(100vh - 40px); /* Adjust height to account for margins */
+}
+
+.sidebar.collapsed {
+    width: 130px; /* Adjust collapsed sidebar width as needed */
+}
+
+.sidebar .nav-link span {
+    transition: opacity 0.25s ease-out;
+}
+
+.sidebar.collapsed .nav-link span {
+    opacity: 0;
+}
+
+.main-content {
+    padding-left: 20px; /* Adjust as needed */
+    flex: 1; /* Ensure it takes up remaining space */
+}
+
+/* Hidden class to toggle visibility of menu items */
+.hidden-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease-out, opacity 0.25s ease-out;
+    opacity: 0;
+}
+
+.hidden-menu.show {
+    max-height: 500px; /* Adjust as needed */
+    opacity: 1;
+}
+
+/* Sidebar height adjustment */
+.sidebar.hidden-sidebar {
+    height: 50px; /* Adjust hidden sidebar height as needed */
+}
+
+/* Ensure sidebar toggler is positioned up and down in small screens */
+@media (max-width: 992px) {
+    .sidebar .btn-primary.btn-sm.ms-auto {
+        display: none;
+    }
+
+    .sidebar .btn-primary.btn-sm.mt-2 {
+        display: block;
+    }
+
+    .sidebar {
+        width: 100%; /* Full width on small screens */
+        height: 75vh; 
+    }
+
+    .sidebar.collapsed {
+        width: 100%; /* Full width on small screens when collapsed */
+    }
+
+    .sidebar.hidden-sidebar {
+        height: 10px; /* Adjust hidden sidebar height as needed */
+    }
+
+    .sidebar .nav-pills.hidden-menu {
+        display: none;
+    }
+
+    .sidebar .nav-pills.hidden-menu.show {
+        display: block;
+    }
+}
+
+@media (min-width: 992px) {
+    .sidebar .btn-primary.btn-sm.mt-2 {
+        display: none;
+    }
+
+    .sidebar .nav-pills.hidden-menu {
+        display: block;
+    }
+}
+
+.nav-link:hover {
+    cursor: pointer;
+}

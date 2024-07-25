@@ -1,0 +1,105 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+:root {
+    /* Green shades */
+    --green-50: #e6f4e6;
+    --green-100: #c2f0c2;
+    --green-200: #9de09d;
+    --green-300: #78d078;
+    --green-400: #55c955;
+    --green-500: #32b532;
+    /* Default green */
+    --green-600: #2ea72e;
+    --green-700: #298b29;
+    --green-800: #247024;
+    --green-900: #1f641f;
+
+
+    /* Cyan shades */
+    --ceyan: #49BBBD;
+    --cyan-50: #e6ffff;
+    --cyan-100: #c2ffff;
+    --cyan-200: #9dffff;
+    --cyan-300: #78ffff;
+    --cyan-400: #55ffff;
+    --cyan-500: #32ffff;
+    /* Default cyan */
+    --cyan-600: #2ed9d9;
+    --cyan-700: #29b2b2;
+    --cyan-800: #248c8c;
+    --cyan-900: #1f6666;
+
+    /* White shades */
+    --white: #ffffff;
+    /* Default white */
+    --white-50: #ffffff;
+    /* Same as default white */
+    --white-100: #f2f2f2;
+    --white-200: #e6e6e6;
+    --white-300: #d9d9d9;
+    --white-400: #cccccc;
+    --white-500: #bfbfbf;
+    --white-600: #b3b3b3;
+    --white-700: #a6a6a6;
+    --white-800: #999999;
+    --white-900: #8c8c8c;
+
+    /* Blue shades */
+    --blue-50: #e6f7ff;
+    --blue-100: #c2e0ff;
+    --blue-200: #9dc9ff;
+    --blue-300: #78b2ff;
+    --blue-400: #559bff;
+    --blue-500: #3284ff;
+    /* Default blue */
+    --blue-600: #2e75e6;
+    --blue-700: #2967cc;
+    --blue-800: #2459b3;
+    --blue-900: #1f4b99;
+
+
+
+    /* Primary colors */
+    --primary-red: #ff0000;
+    --primary-green: #00ff00;
+    --primary-blue: #0000ff;
+
+    /* Secondary colors */
+    --secondary-yellow: #ffff00;
+    --secondary-cyan: #00ffff;
+    --secondary-magenta: #ff00ff;
+
+    /* Tertiary colors */
+    --tertiary-orange: #ffa500;
+    --tertiary-purple: #800080;
+    --tertiary-chartreuse: #7fff00;
+
+    /* Grayscale */
+    --gray-100: #f8f9fa;
+    --gray-200: #e9ecef;
+    --gray-300: #dee2e6;
+    --gray-400: #ced4da;
+    --gray-500: #adb5bd;
+    --gray-600: #6c757d;
+    --gray-700: #495057;
+    --gray-800: #343a40;
+    --gray-900: #212529;
+
+    /* Accent colors */
+    --accent-pink: #ff69b4;
+    --accent-lime: #00ff00;
+    --accent-teal: #008080;
+    --accent-silver: #c0c0c0;
+    --accent-gold: #ffd700;
+
+    /* Semantic colors */
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

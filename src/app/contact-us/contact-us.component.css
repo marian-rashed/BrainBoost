@@ -1,0 +1,33 @@
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .form-label {
+    font-weight: bold;
+  }
+  
+  .btn-danger {
+    background-color: #ff5a5f;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+  }
+  
+  .btn-danger:hover {
+    background-color: #ff4b4f;
+  }
+  
+  textarea.form-control {
+    resize: none;
+  }
+  
+  form {
+    line-height: 1.5;
+  }
+
+  .top
+  {
+    margin-top: 5rem !important;
+  }
+  

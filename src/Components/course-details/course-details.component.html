@@ -1,0 +1,272 @@
+<app-spinner [isLoading]="isLoading"></app-spinner>
+<ng-container *ngIf="crsDetails">
+  <div class="container-fluid mt-5">
+    <!--course details  -->
+    <div class="row bg-dark p-3">
+      <!-- course main info -->
+      <div class="col-lg-8 course_main">
+        <div class="container mt-5">
+          <div class="course-header w-100">
+            <h2>{{ crsDetails.name }}</h2>
+            <p class="w-50">
+              {{ crsDetails.description }}
+            </p>
+            <div class="ratings">
+              <span
+                class="badge badge-warning"
+                *ngIf="(crsDetails.rate ?? 0) >= 4"
+                >High Rate</span
+              >
+              <span
+                class="badge badge-warning"
+                *ngIf="(crsDetails.rate ?? 0) < 4"
+                >Low Rate</span
+              >
+              <div class="star-rating">
+                <ng-container *ngFor="let filled of stars">
+                  <i
+                    class="fas"
+                    [ngClass]="filled ? 'fa-star' : 'fa-star-o'"
+                  ></i>
+                </ng-container>
+              </div>
+              <span class="rating-value">{{ crsDetails.rate }}</span>
+              <a href="#" class="reviews"
+                >({{ crsDetails.numOfRates }} ratings)</a
+              >
+              <span class="students">{{ NumOfStudent }} students</span>
+            </div>
+            <p class="creator">
+              Created by
+              <a
+                >{{ crsDetails.teacherDataDto?.fname }}
+                {{ crsDetails.teacherDataDto?.lname }}</a
+              >
+            </p>
+            <div class="course-meta">
+              <span
+                ><i class="fas fa-sync-alt"></i> Last updated
+                {{ crsDetails.lastUpdate | date : "short" }}</span
+              >
+              <span
+                ><i class="fas fa-globe"></i> {{ crsDetails.language }}</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- course card -->
+      <div class="col-lg-4">
+        <div class="container mt-3">
+          <div class="card text-center">
+            <img
+              [src]="crsDetails.photoUrl"
+              class="cardimg img-fluid d-block mt-3 rounded-4"
+              alt="Card image"
+              width="90%"
+              height="95%"
+            />
+            <div class="card-body">
+              <p class="card-text">
+                <span class="price-new">${{ crsDetails.price }}</span>
+                <span class="price-old">${{ crsDetails.price + 20 }}</span>
+              </p>
+
+              <div class="star-rating mb-2">
+                <ng-container *ngFor="let filled of stars">
+                  <i
+                    class="fas"
+                    [ngClass]="filled ? 'fa-star' : 'fa-star-o'"
+                  ></i>
+                </ng-container>
+                <span class="ml-2"> {{ crsDetails.rate }}</span>
+              </div>
+
+              <div>
+                <ng-container *ngIf="!IsEnrolled; else enrolledTemplate">
+                  <a
+                    (click)="handleEnrollCourse(crsDetails.id)"
+                    class="btn btn-enroll mb-2 w-100"
+                  >
+                    Enroll Now <i class="fas fa-arrow-right"></i>
+                  </a>
+                </ng-container>
+
+                <ng-template #enrolledTemplate>
+                  <a
+                    class="btn btn-success mb-2 w-100"
+                    (click)="handleGoToCourse(crsDetails.id)"
+                  >
+                    Go To Course <i class="fas fa-check"></i>
+                  </a>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- end course details -->
+
+  <div class="col-md-12 col-md-8 shadow-lg rounded-4">
+    <div class="card p-5">
+      <ng-container *ngIf="crsDetails.whatToLearn?.length != 0">
+        <div class="card-body">
+          <h4 class="card-title fw-bolder text-">
+            What you will learn in this course
+          </h4>
+
+          <p class="card-text" *ngFor="let item of crsDetails.whatToLearn">
+            {{ item.content }}
+          </p>
+        </div>
+      </ng-container>
+      <!-- course description -->
+      <div class="row mt-3">
+        <div class="col-lg-8 col-md-12 border-end">
+          <ng-container *ngIf="crsDetails">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title fw-bold">Description</h2>
+                <p class="card-text">
+                  {{ crsDetails.longDescription }}
+                </p>
+              </div>
+            </div>
+          </ng-container>
+
+          <div class="card mt-4 specifications">
+            <div class="card-body">
+              <h2 class="card-title">Specifications</h2>
+              <div class="row mt-5">
+                <div class="col-md-6">
+                  <ul class="card-text">
+                    <li><i class="fas fa-star"></i> Free Demo</li>
+                    <li>
+                      <i class="fas fa-briefcase"></i> 100% job Assistance
+                    </li>
+                    <li><i class="fas fa-clock"></i> Flexible Timing</li>
+                    <li>
+                      <i class="fas fa-project-diagram"></i> Realtime Project
+                      Work
+                    </li>
+                    <li>
+                      <i class="fas fa-chalkboard-teacher"></i> Learn From
+                      Experts
+                    </li>
+                    <li><i class="fas fa-certificate"></i> Get Certified</li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <ul class="card-text">
+                    <li><i class="fas fa-heart"></i> Place your career</li>
+                    <li><i class="fas fa-dollar-sign"></i> Reasonable fees</li>
+                    <li><i class="fas fa-tv"></i> Access on mobile and TV</li>
+                    <li>
+                      <i class="fas fa-video"></i> High-quality content and
+                      Class videos
+                    </li>
+                    <li>
+                      <i class="fas fa-graduation-cap"></i> Learning Management
+                      System
+                    </li>
+                    <li>
+                      <i class="fas fa-infinity"></i> Full lifetime access
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- reviews -->
+
+          <div class="container-fluid mt-5 shadow-lg rounded-3 p-3">
+            <h2 class="mb-4">Course Reviews</h2>
+            <ng-container *ngIf="review">
+              <div
+                class="review-card d-flex align-items-start"
+                *ngFor="let item of review"
+              >
+                <img
+                  [src]="item.photoUrl"
+                  class="rounded-pill me-3"
+                  alt="assets/User.png"
+                />
+                <div>
+                  <p class="mb-1">{{ item.content }}</p>
+                  <div class="rating-stars">
+                    <ng-container *ngFor="let i of item.stars2">
+                      <i class="fas fa-star" *ngIf="i == true"></i>
+                      <i class="far fa-star" *ngIf="i == false"></i>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+
+          <!-- finish of it -->
+        </div>
+
+        <div class="col-lg-4 col-md-12 mini-info">
+          <div class="course-card shadow-lg">
+            <h3>Course Info :</h3>
+            <div class="info-item">
+              <i class="fas fa-chalkboard-teacher"></i>
+              <span>Instructor:</span> {{ crsDetails.teacherDataDto?.fname }}
+            </div>
+            <div class="info-item">
+              <i class="fas fa-clock"></i>
+              <span>Duration:</span> {{ crsDetails.durtion }} hours
+            </div>
+            <div class="info-item">
+              <i class="fas fa-video"></i>
+              <span>Lectures:</span> {{ crsDetails.numOfVideos }}
+            </div>
+            <div class="info-item">
+              <i class="fas fa-signal"></i>
+              <span>Level:</span> {{ crsDetails.level }}
+            </div>
+          </div>
+
+          <div class="instructor-card shadow-lg">
+            <img
+              [src]="crsDetails.teacherDataDto?.pictureUrl"
+              alt="Instructor Image"
+            />
+            <h3>
+              {{ crsDetails.teacherDataDto?.fname }}
+              {{ crsDetails.teacherDataDto?.lname }}
+            </h3>
+            <p>{{ crsDetails.teacherDataDto?.career }}</p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="contact-info">
+              <p>
+                <i class="fas fa-envelope"></i>
+                {{ crsDetails.teacherDataDto?.email }}
+              </p>
+              <p>
+                <i class="fas fa-phone"></i>
+                {{ crsDetails.teacherDataDto?.phoneNumber }}
+              </p>
+              <p>
+                <i class="fas fa-map-marker-alt"></i>
+                {{ crsDetails.teacherDataDto?.address }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- end course details -->
+    </div>
+  </div>
+</ng-container>

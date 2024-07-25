@@ -1,0 +1,96 @@
+<div class="container-fluid xx">
+  <div class="row">
+    <!-- Sidebar -->
+    <div
+      class="col-lg-3 col-md-12 sidebar shadow-lg bg-white rounded-3"
+      [class.collapsed]="isSidebarCollapsed"
+    >
+      <div class="d-flex flex-column flex-shrink-0 p-3 bg-white mt-2">
+        <div
+          class="d-flex justify-content-between align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
+        >
+          <a href="#" class="d-flex align-items-center text-decoration-none">
+            <span class="fs-4 ms-2 text-dark" *ngIf="!isSidebarCollapsed"
+              >{{ teacher["fname"] }} {{ teacher["lname"] }}</span
+            >
+          </a>
+          <button
+            class="btn btn-primary btn-sm ms-auto d-md-none d-lg-block"
+            (click)="toggleSidebar()"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+        <button
+          class="btn btn-primary btn-sm mt-2 d-block d-lg-none"
+          (click)="toggleSidebar()"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <hr />
+        <ul
+          class="nav nav-pills flex-column mb-auto"
+          [class.hidden-menu]="isSidebarHidden"
+        >
+          <li class="nav-item">
+            <a
+              (click)="showComponent('about-teacher')"
+              class="nav-link link-dark"
+              [class.active]="currentComponent === 'about-teacher'"
+            >
+              <i class="fas fa-user"></i>
+              <span *ngIf="!isSidebarCollapsed">About Teacher</span>
+            </a>
+          </li>
+          <li>
+            <a
+              (click)="showComponent('teacher-courses')"
+              class="nav-link link-dark"
+              [class.active]="currentComponent === 'teacher-courses'"
+            >
+              <i class="fas fa-book"></i>
+              <span *ngIf="!isSidebarCollapsed">Teacher Courses</span>
+            </a>
+          </li>
+          <li>
+            <a
+              (click)="showComponent('teacher-earning')"
+              class="nav-link link-dark"
+              [class.active]="currentComponent === 'teacher-earning'"
+            >
+              <i class="fas fa-edit"></i>
+              <span *ngIf="!isSidebarCollapsed">Teacher Earning</span>
+            </a>
+          </li>
+          <li>
+            <a
+              (click)="showComponent('instructor-profile')"
+              class="nav-link link-dark"
+              [class.active]="currentComponent === 'instructor-profile'"
+            >
+              <i class="fas fa-edit"></i>
+              <span *ngIf="!isSidebarCollapsed">Update info</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Main Content -->
+    <div class="col-md-9 col-12 main-content mt-5">
+      <ng-container *ngIf="currentComponent === 'about-teacher'">
+        <app-about-teacher [teacherInfo]="teacher"></app-about-teacher>
+      </ng-container>
+      <ng-container *ngIf="currentComponent === 'teacher-courses'">
+        <app-teacher-courses
+          [teacherCourses]="teacherCourses"
+        ></app-teacher-courses>
+      </ng-container>
+      <ng-container *ngIf="currentComponent === 'teacher-earning'">
+        <app-teacher-earning [teacherId]="teacherId"></app-teacher-earning>
+      </ng-container>
+      <ng-container *ngIf="currentComponent === 'instructor-profile'">
+        <app-instructor-profile [teacher]="teacher"></app-instructor-profile>
+      </ng-container>
+    </div>
+  </div>
+</div>
